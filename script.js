@@ -43,12 +43,42 @@ button.addEventListener('click', () => {
                     const selectedIndex = forecastSelect.value;
                     const selectedForecast = data.list[selectedIndex];
                     const weathertemp = selectedForecast.main.temp;
-                    const date = selectedForecast.weather[0].description;
+                    const desc = selectedForecast.weather[0].description;
                     const humi = selectedForecast.main.humidity;
 
-                    weather.textContent = date;
+                    weather.textContent = desc;
                     temperature.textContent = `${weathertemp}°C`;
                     humidity.textContent = `${humi}%`;
+
+                    //obsługa wyboru ikonki
+                    switch(selectedForecast.weather[0].main){
+                        case "Clouds":
+                            photo.src = "./img/cloud.png";
+                            break;
+                        case "Rain":
+                            photo.src = "./img/rain.png";
+                            break;
+                        case "Thunderstorm":
+                            photo.src = "./img/thunderstorm.png";
+                            break;
+                        case "Clear":
+                            photo.src = "./img/sun.png";
+                            break;
+                        case "Ice":
+                            photo.src = "./img/ice.png";
+                            break;
+                        case "Fog":
+                            photo.src = "./img/fog.png";
+                            break;
+                        case "Drizzle":
+                            photo.src = "./img/drizzle.png";
+                            break;
+                        default:
+                            photo.src = "./img/unknown.png";
+                            break;
+                            
+                    }
+
                 });
             })
             .catch(error => {
